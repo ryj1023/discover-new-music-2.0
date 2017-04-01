@@ -2,9 +2,9 @@
   "name": "discover-the-music-app",
   "version": "1.0.0",
   "description": "",
-  "main": "server.js",
+  "main": "js/server.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node js/server.js"
   },
   "repository": {
     "type": "git",
