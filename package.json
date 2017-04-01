@@ -1,0 +1,28 @@
+{
+  "name": "discover-the-music-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ryj1023/Discover-The-Music-App.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ryj1023/Discover-The-Music-App/issues"
+  },
+  "homepage": "https://github.com/ryj1023/Discover-The-Music-App#readme",
+  "dependencies": {
+    "express": "^4.15.2",
+    "jquery": "^3.0.0"
+  },
+  "devDependencies": {
+    "chokidar-cli": "^1.2.0",
+    "less": "^2.7.2",
+    "webpack": "^1.13.1"
+  }
+}

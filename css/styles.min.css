@@ -1,0 +1,143 @@
+body,
+html {
+  height: 100%;
+  overflow: auto;
+}
+* {
+  margin: auto;
+}
+.search-container {
+  height: 60px;
+  text-align: center;
+  background-color: #1976D2;
+  width: 100%;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  position: fixed;
+  top: 0;
+  z-index: 100;
+}
+.content-wrapper {
+  height: 100%;
+  margin-top: 100px;
+  overflow: auto;
+}
+.resultsWrapper {
+  padding-top: 2%;
+  padding-bottom: 8%;
+  background-color: #2196F3;
+  height: 100%;
+  width: 50%;
+  float: left;
+}
+.band-name-input {
+  width: 50%;
+}
+.band-name-input .text {
+  margin: 0;
+  padding: 0px;
+  padding-left: 2%;
+  border: 0;
+  width: 68%;
+  height: 50px;
+}
+.band-name-input .button {
+  margin: 0;
+  padding: 0px;
+  border: 0;
+  width: 30%;
+  height: 50px;
+  float: right;
+  font-family: 'Anton', sans-serif;
+  font-size: 20px;
+  color: white;
+  background-color: #B6B6B6;
+}
+.results {
+  padding-left: 2%;
+  background-color: #2196F3;
+  height: 100%;
+  width: 100%;
+  float: left;
+}
+.background-guitar {
+  padding-top: 10%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 300px;
+  height: 400px;
+}
+.results h1 {
+  font-family: 'Anton', sans-serif;
+  font-size: 60px;
+  padding-top: 10%;
+  text-align: center;
+  color: #FFFFFF;
+}
+.results h2 {
+  font-family: 'Fjalla+One', sans-serif;
+  font-size: 17px;
+  text-align: center;
+  padding-top: 2%;
+  color: #FFFFFF;
+}
+.result {
+  font-family: 'Fjalla+One', sans-serif;
+  font-size: 17px;
+  text-align: left;
+  padding-top: 2%;
+  color: #FFFFFF;
+}
+a {
+  color: white;
+}
+.band-info {
+  padding-top: 2%;
+  padding-bottom: 8%;
+  background-image: url("../band-background-image.png");
+  background-size: cover;
+  background-position: center;
+  height: 100%;
+  width: 50%;
+  float: right;
+  overflow: auto;
+}
+.band-info h1,
+.band-info iframe {
+  display: none;
+}
+.band-info h1 {
+  font-family: 'Fjalla+One', sans-serif;
+  color: white;
+  font-size: 12px;
+  padding-left: 2%;
+  padding-right: 2%;
+  background-color: #1976D2;
+  margin: 4%;
+  padding-top: 1%;
+  padding-bottom: 1%;
+  border-radius: 25px;
+  border: 2px solid;
+}
+.band-info iframe {
+  border: 0px;
+  margin: auto;
+  height: 60%;
+  width: 90%;
+}
+.bandOrArtist {
+  font-family: 'Anton', sans-serif;
+  font-size: 60px;
+  padding-top: 10%;
+  text-align: center;
+  color: #FFFFFF;
+}
+.hidden {
+  display: none;
+}
+.counter {
+  font-size: 30px;
+  color: white;
+  text-align: center;
+}
