@@ -10,7 +10,7 @@
     "type": "git",
     "url": "/Users/ryanjohnson/projects/Discover-The-Music-Heroku/.git/"
   },
-  "engine":{
+  "engine": {
     "node": "7.8.0"
   },
   "author": "",
@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/ryj1023/Discover-The-Music-App#readme",
   "dependencies": {
+    "axios": "^0.18.0",
     "express": "^4.15.2",
     "jquery": "^3.0.0"
   },

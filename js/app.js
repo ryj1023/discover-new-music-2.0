@@ -50,8 +50,9 @@ var getMusic = function(tags){
 	$.ajax({
 		dataType: "jsonp",
 		url: '//www.tastekid.com/api/similar?q=' + tags + '&callback=callBackMusic&k=227160-Discover-804XO5GB&verbose=1&type=music&info=1',
-		type: "GET",
+		type: "GET"
 	})
+
 };
 //callback function for the API data thats finds the length of the data and diplays search result number in the counter div
 var callBackMusic = function(query){
@@ -85,6 +86,22 @@ var showMusicResults = function(music) {
 	return result;
 }
 $(document).ready(function() {
+
+	$.ajax({
+		method: "GET",
+		url: "/get-auth-code",
+		success: function(result){
+			console.log(result);
+			}
+		});
+
+	// $.ajax({
+	// 	method: "GET",
+	// 	url: "https://crossorigin.me/https://accounts.spotify.com/authorize/?client_id=1477dd268434476fa067b97c618573d5&response_type=code&redirect_uri=localhost:8080%2Fcallback&scope=user-read-private%20user-read-email&state=34fFs29kd09", 
+	// 	success: function(result){
+	// 		console.log(result);
+	// 		}
+	// 	});
 	hideBandInfo()
 //displays iframe and discription when each link is clicked.
 	$(document).on('click', '.result li', function(event) {
@@ -93,7 +110,7 @@ $(document).ready(function() {
 		getLocation();
 		// Prevent from opening iframe in new tab
 		event.preventDefault();
-		var _url = $(this).attr('href'),
+		var _url = $(this).attr('href');
 		description = $(this).attr('description');
 		artistName = $(this).attr('name');
 		$('#artistName').val(artistName);
@@ -149,17 +166,49 @@ $(function() {
 $( "#focusedInput" ).autocomplete({
     minLength: 1,
 	 source: function (request, response) {
-        $.ajax({
-            url: 'https://api.spotify.com/v1/search',
-            data: {
-                q: $("#focusedInput").val(),
-                type: 'artist',
-                limit: 10
-            },
-            success: function (data) { 
-            	response(data.artists.items)	    
-            }
-        });
+        // $.ajax({
+        //     url: 'https://api.spotify.com/v1/search',
+        //     data: {
+        //         q: $("#focusedInput").val(),
+        //         type: 'artist',
+        //         limit: 10
+        //     },
+        //     success: function (data) { 
+        //     	response(data.artists.items)	    
+        //     }
+		  // });
+		  
+
+      //   $.ajax({
+		//     method: "POST",
+		//     url: "https://accounts.spotify.com/api/token",
+		//     data: {
+		//       "grant_type":    "authorization_code",
+		//       "code":          code,
+		//       "redirect_uri":  "localhost:8080",
+		//       "client_secret": "b659abbe6d354267833920c37d88a499",
+		//       "client_id":     "1477dd268434476fa067b97c618573d5",
+		//     },
+		//     success: function(result) {
+		//     	console.log(result)
+		//       // handle result...
+		//     },
+
+		$.ajax({
+			method: "POST",
+			url: "/api/get-access-token",
+			data: {
+			  "grant_type":    "authorization_code",
+			//   "code":          code,
+			  "redirect_uri":  "localhost:8080",
+			  "client_secret": "b659abbe6d354267833920c37d88a499",
+			  "client_id":     "1477dd268434476fa067b97c618573d5",
+			},
+			success: function(result) {
+				console.log(result)
+			  // handle result...
+			},
+  });
     }
 }).data( "ui-autocomplete" )._renderItem = function( ul, item ) {       
      return $( "<li></li>" ).click(function(){
