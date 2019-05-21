@@ -15,12 +15,29 @@ var showPosition = function(position) {
 	    	getTourDates(artistName, location);
 		}
 var getTourDates = function(artistName, location){
-	$.getJSON("https://api.bandsintown.com/artists/" + artistName + "/events.json?api_version=2.0&callback=?&app_id=ryjay&location=" + location.latitude + "," + location.longitude + "",
-	 function(result) {
-	 	if(result){
-	   displayTourDates(location, result);
-			}
-	    });
+	$.ajax({
+		dataType: "json",
+		url: `http://www.bandsintown.com/event/13722599?app_id=ryjay&artist=${artistName}&came_from=67`,
+		//url: "https://api.bandsintown.com/artists/" + artistName + "/events.json?api_version=2.0&callback=?&app_id=ryjay&location=" + location.latitude + "," + location.longitude + "",
+		type: "GET"
+	})
+	.done(() => {
+		
+	})
+	.fail((xhr, status, err) => {
+		$('.loading').hide()
+		$('.get-tickets').hide();
+	})
+	.always(() => {
+		console.log('done!')
+	})
+	// $.getJSON("https://api.bandsintown.com/artists/" + artistName + "/events.json?api_version=2.0&callback=?&app_id=ryjay&location=" + location.latitude + "," + location.longitude + "",
+	//  function(result, err) {
+	// 	 console.log('err', err)
+	//  	if(result){
+	//    	displayTourDates(location, result);
+	// 		}
+	//     });
 };
 var displayTourDates = function(location, result){
 	if(result && result[0]){
@@ -87,13 +104,13 @@ var showMusicResults = function(music) {
 }
 $(document).ready(function() {
 
-	$.ajax({
-		method: "GET",
-		url: "/get-auth-code",
-		success: function(result){
-			console.log(result);
-			}
-		});
+	// $.ajax({
+	// 	method: "GET",
+	// 	url: "/get-auth-code",
+	// 	success: function(result){
+	// 		console.log(result);
+	// 		}
+	// 	});
 
 	// $.ajax({
 	// 	method: "GET",
@@ -148,7 +165,7 @@ $(document).ready(function() {
 /*Function that runs when keyword is entered and search button clicked.
 The results and counter classes are cleared and the value typed by user is stored.
 */
-	$('.form-group').submit(function(e) {
+	$('#search-form').submit(function(e) {
 		e.preventDefault();
 		//clear cache results of a previous search
 		cacheResults();
@@ -194,21 +211,21 @@ $( "#focusedInput" ).autocomplete({
 		//       // handle result...
 		//     },
 
-		$.ajax({
-			method: "POST",
-			url: "/api/get-access-token",
-			data: {
-			  "grant_type":    "authorization_code",
-			//   "code":          code,
-			  "redirect_uri":  "localhost:8080",
-			  "client_secret": "b659abbe6d354267833920c37d88a499",
-			  "client_id":     "1477dd268434476fa067b97c618573d5",
-			},
-			success: function(result) {
-				console.log(result)
-			  // handle result...
-			},
-  });
+// 		$.ajax({
+// 			method: "POST",
+// 			url: "/api/get-access-token",
+// 			data: {
+// 			  "grant_type":    "authorization_code",
+// 			//   "code":          code,
+// 			  "redirect_uri":  "localhost:8080",
+// 			  "client_secret": "b659abbe6d354267833920c37d88a499",
+// 			  "client_id":     "1477dd268434476fa067b97c618573d5",
+// 			},
+// 			success: function(result) {
+// 				console.log(result)
+// 			  // handle result...
+// 			},
+//   });
     }
 }).data( "ui-autocomplete" )._renderItem = function( ul, item ) {       
      return $( "<li></li>" ).click(function(){
