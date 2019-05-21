@@ -15,33 +15,18 @@ var showPosition = function(position) {
 	    	getTourDates(artistName, location);
 		}
 var getTourDates = function(artistName, location){
-	$.ajax({
-		dataType: "json",
-		url: `http://www.bandsintown.com/event/13722599?app_id=ryjay&artist=${artistName}&came_from=67`,
-		//url: "https://api.bandsintown.com/artists/" + artistName + "/events.json?api_version=2.0&callback=?&app_id=ryjay&location=" + location.latitude + "," + location.longitude + "",
-		type: "GET"
-	})
-	.done(() => {
-		
+	$.post('/get-bands-event-data', {data: artistName.toLowerCase()})
+	.done((res) => {
+		displayTourDates(location, res);
 	})
 	.fail((xhr, status, err) => {
 		$('.loading').hide()
 		$('.get-tickets').hide();
 	})
-	.always(() => {
-		console.log('done!')
-	})
-	// $.getJSON("https://api.bandsintown.com/artists/" + artistName + "/events.json?api_version=2.0&callback=?&app_id=ryjay&location=" + location.latitude + "," + location.longitude + "",
-	//  function(result, err) {
-	// 	 console.log('err', err)
-	//  	if(result){
-	//    	displayTourDates(location, result);
-	// 		}
-	//     });
 };
 var displayTourDates = function(location, result){
 	if(result && result[0]){
-		var tourDates = result[0].artists[0].facebook_tour_dates_url;
+		var tourDates = result[0].url;
 		$('.get-tickets').attr('href', tourDates);
 		$('.get-tickets').attr('target', '_blank');
 		showTours();
