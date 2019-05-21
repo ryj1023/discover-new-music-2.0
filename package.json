@@ -10,7 +10,7 @@
     "type": "git",
     "url": "/Users/ryanjohnson/projects/Discover-The-Music-Heroku/.git/"
   },
-  "engine": {
+  "engines": {
     "node": "10.15.3"
   },
   "author": "",
