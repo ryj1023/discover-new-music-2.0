@@ -11,7 +11,8 @@
     "url": "/Users/ryanjohnson/projects/Discover-The-Music-Heroku/.git/"
   },
   "engines": {
-    "node": "10.15.3"
+    "node": "10.15.3",
+    "npm": "3.10.5",
   },
   "author": "",
   "license": "ISC",
