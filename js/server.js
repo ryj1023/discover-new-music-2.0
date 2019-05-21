@@ -7,7 +7,7 @@ var bodyParser = require('body-parser')
 
 
 app.listen(process.env.PORT || 8080);
-console.log('server is running');
+console.log('server is running', process.env.PORT);
 app.use( bodyParser.json() );
 app.use(bodyParser.urlencoded({
    extended: true
