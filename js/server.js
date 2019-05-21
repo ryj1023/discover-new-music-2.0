@@ -43,5 +43,4 @@ app.post('/api/get-access-token', (req, res, next) => {
       })
    })
 
-console.log(dir)
 
