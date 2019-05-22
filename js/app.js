@@ -56,7 +56,7 @@ function noTours(){
 var getMusic = function(tags){
 	$.ajax({
 		dataType: "jsonp",
-		url: '//www.tastekid.com/api/similar?q=' + tags + '&callback=callBackMusic&k=227160-Discover-804XO5GB&verbose=1&type=music&info=1',
+		url: 'https://www.tastekid.com/api/similar?q=' + tags + '&callback=callBackMusic&k=227160-Discover-804XO5GB&verbose=1&type=music&info=1',
 		type: "GET"
 	})
 
