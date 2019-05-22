@@ -17,17 +17,17 @@ var showPosition = function(position) {
 var getTourDates = function(artistName, location){
 	$.post('/get-bands-event-data', {data: artistName.toLowerCase()})
 	.done((res) => {
-		console.log('done!!')
+		$('.loading').hide()
+		$('.get-tickets').hide();
 		displayTourDates(location, res);
 	})
 	.fail((xhr, status, err) => {
-		console.log('fail!!')
 		$('.loading').hide()
 		$('.get-tickets').hide();
 	})
-	.always(() => {
-		console.log('always!!')
-	})
+	// .always(() => {
+	// 	console.log('always!!')
+	// })
 };
 var displayTourDates = function(location, result){
 	if(result && result[0]){

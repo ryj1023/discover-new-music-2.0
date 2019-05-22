@@ -1,21 +1,21 @@
 var express = require('express')
 var app = express();
 var path = require('path');
-// var http = require('http');
-// const axios = require('axios');
 var bodyParser = require('body-parser')
-
+var fetch = require('isomorphic-unfetch')
 
 app.listen(process.env.PORT || 8080);
-// console.log('server is running', process.env.PORT);
-// app.use( bodyParser.json() );
-// app.use(bodyParser.urlencoded({
-//    extended: true
-//  })); 
+console.log('server is running', process.env.PORT);
+app.use( bodyParser.json() );
+app.use(bodyParser.urlencoded({
+   extended: true
+ })); 
 
 var dir = path.join(__dirname, '../')
 
 app.use(express.static(dir));
+
+// axios is causing a missing module './common' to not be found when running with heroku. Uninstalling for now
 
 // app.post('/api/get-access-token', (req, res, next) => {
 //    axios.post("https://accounts.spotify.com/api/token", {
@@ -42,5 +42,17 @@ app.use(express.static(dir));
 //          res.send(err)
 //       })
 //    })
+
+   app.post('/get-bands-event-data', (req, res) => {
+      fetch(`https://rest.bandsintown.com/artists/${req.body.data}/events?app_id=ryjay`)
+      .then(result => {
+         // const data = result.json().then(data => console.log('data', data))
+         result.json(result.data).then(data => res.json(data))
+      })
+      .catch(err => {
+         console.log('err', err)
+         res.send(err)
+      })
+   })
 
 
