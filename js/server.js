@@ -3,7 +3,7 @@ var app = express();
 var path = require('path');
 // var http = require('http');
 const axios = require('axios');
-var bodyParser = require('body-parser')
+// var bodyParser = require('body-parser')
 
 
 app.listen(process.env.PORT || 8080);
