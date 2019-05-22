@@ -32,15 +32,15 @@ app.use(express.static(dir));
 //    })
 //    });
 
-   app.post('/get-bands-event-data', (req, res) => {
-      axios.get(`https://rest.bandsintown.com/artists/${req.body.data}/events?app_id=ryjay`)
-      .then(result => {
-         res.json(result.data)
-      })
-      .catch(err => {
-         console.log('err', err)
-         res.send(err)
-      })
-   })
+//    app.post('/get-bands-event-data', (req, res) => {
+//       axios.get(`https://rest.bandsintown.com/artists/${req.body.data}/events?app_id=ryjay`)
+//       .then(result => {
+//          res.json(result.data)
+//       })
+//       .catch(err => {
+//          console.log('err', err)
+//          res.send(err)
+//       })
+//    })
 
 
