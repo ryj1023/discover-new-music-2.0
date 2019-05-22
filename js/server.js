@@ -2,16 +2,16 @@ var express = require('express')
 var app = express();
 var path = require('path');
 // var http = require('http');
-const axios = require('axios');
-var bodyParser = require('body-parser')
+// const axios = require('axios');
+// var bodyParser = require('body-parser')
 
 
 app.listen(process.env.PORT || 8080);
-console.log('server is running', process.env.PORT);
-app.use( bodyParser.json() );
-app.use(bodyParser.urlencoded({
-   extended: true
- })); 
+// console.log('server is running', process.env.PORT);
+// app.use( bodyParser.json() );
+// app.use(bodyParser.urlencoded({
+//    extended: true
+//  })); 
 
 var dir = path.join(__dirname, '../')
 
