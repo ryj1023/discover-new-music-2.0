@@ -55,4 +55,16 @@ app.use(express.static(dir));
       })
    })
 
+   app.post('/get-bands-list', (req, res) => {
+      fetch(`https://www.tastekid.com/api/similar?q=${req.body.tags}&k=227160-Discover-804XO5GB&verbose=1&type=music&info=1`)
+      .then(result => {
+         result.json(result).then(data => {
+            res.json(data)})
+      })
+      .catch(err => {
+         console.log('err', err)
+         res.send(err)
+      })
+   })
+
 

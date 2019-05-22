@@ -54,15 +54,14 @@ function noTours(){
 }
 //ajax data is obtained and returned from API.
 var getMusic = function(tags){
-	$.ajax({
-		dataType: "jsonp",
-		url: 'https://www.tastekid.com/api/similar?q=' + tags + '&callback=callBackMusic&k=227160-Discover-804XO5GB&verbose=1&type=music&info=1',
-		type: "GET"
+	$.post('/get-bands-list', {tags: tags.toLowerCase()})
+	.done((res) => {
+		getMusicList(res)
 	})
 
 };
-//callback function for the API data thats finds the length of the data and diplays search result number in the counter div
-var callBackMusic = function(query){
+// function for the API data thats finds the length of the data and diplays search result number in the counter div
+var getMusicList = function(query){
 		var tagName = query.Similar.Info[0].Name;
 		var searchResults = showSearchResults(query.Similar.Results.length, tagName);
 		var searchedBand = showMusicResults(query.Similar.Info[0])
